@@ -14,7 +14,9 @@ public class Avatar extends Personnage
 	private ArrayList<Creature> listeAmis; 
 	private ArrayList<Acc>      listeAcc ;
 	private Monde monde;
-	public static final Image avatarImage = java.awt.Toolkit.getDefaultToolkit().getImage("resource/Avatar.png");
+	
+	public static final Image[] tabCreatureImage = {java.awt.Toolkit.getDefaultToolkit().getImage("resource/Avatar2.png"),
+							java.awt.Toolkit.getDefaultToolkit().getImage("resource/Avatar3.png")};
 	private int resteAJouer;
 	
 	public void dessiner(Graphics g, Monde m) {
@@ -29,6 +31,7 @@ public class Avatar extends Personnage
 		this.listeAcc  = new ArrayList<Acc>();
 		this.monde = monde;
 		resteAJouer = 0;
+		this.creatureImage = tabCreatureImage[(int)(Math.random()*2)];
 		
 	}
 	
@@ -69,7 +72,7 @@ public class Avatar extends Personnage
 		}
 		else
 		{	
-			System.out.println(String.format("%s donne %s à %s", this.getNom(), listeAcc.get(0).getNom(), c.getNom()));
+			System.out.println(String.format("%s donne %s Ã  %s", this.getNom(), listeAcc.get(0).getNom(), c.getNom()));
 			if (listeAcc.get(0).getPoids()>0.5)
 				this.devenirAmi(c);
 			c.ajouter(listeAcc.get(0));
@@ -79,7 +82,7 @@ public class Avatar extends Personnage
 	
 	public double course()
 	{
-		System.out.println("--------------"+this.getNom()+" fait courir son équipe !--------------");
+		System.out.println("--------------"+this.getNom()+" fait courir son Ã©quipe !--------------");
 		double distance = 0;
 		for (Creature c : listeAmis)
 		{
@@ -140,7 +143,7 @@ public class Avatar extends Personnage
 
 	//////
 	////
-	//       Fonctions de déplacement
+	//       Fonctions de dÃ©placement
 	////
 	//////
 
