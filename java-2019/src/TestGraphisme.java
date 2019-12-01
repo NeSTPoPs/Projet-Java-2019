@@ -9,7 +9,7 @@ import personnage.Creature;
 
 
 public class TestGraphisme  {
-	private static final int TAILLE_CASE=40;
+	private static final int TAILLE_CASE=80;
 	private static final int NB_CASES=10;
 	private static final int NB_COUPS=5;
 	
@@ -34,11 +34,11 @@ public class TestGraphisme  {
 	}
 	
 	public static void main( String [ ] args ) throws InterruptedException {
-		// Création fenêtre graphique et ses caractéristiques
+		// CrÃ©ation fenÃªtre graphique et ses caractÃ©ristiques
 		JFrame f = new JFrame () ;
 		f.setLocationRelativeTo(null) ;
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) ;
-		                                                  // Création du monde (qui est un panneau )
+		                                                  // CrÃ©ation du monde (qui est un panneau )
 		Monde m = new Monde(NB_CASES,TAILLE_CASE) ;
 		
 	
@@ -50,8 +50,8 @@ public class TestGraphisme  {
 		ajouterBoucle(m, "Boost", (int)(Math.random()*4+2));
 		
 		
-		f.setContentPane (m) ;                            //Ajout du monde à la fenêtre
-		f.pack () ;                                         // Adaptation de la fenêtre au panneau
+		f.setContentPane (m) ;                            //Ajout du monde Ã  la fenÃªtre
+		f.pack () ;                                         // Adaptation de la fenÃªtre au panneau
 		f.setVisible ( true ) ;
 		
 		Avatar jake=new Avatar ("Jake" ,79.5 ,m) ;          // ajoute Jake dans le monde
@@ -64,10 +64,10 @@ public class TestGraphisme  {
 	
 		
 		for ( int i =0;i <10; i++) {
-			Thread.sleep(1000) ;                          // Ralenti l’affichage
+			Thread.sleep(1000) ;                          // Ralenti lâ€™affichage
 		
 			//---------------------------DEPLACEMENT DE J1------------------------
-			System.out.println(String.format("### Déplacement de %s ###", jake.getNom()));
+			System.out.println(String.format("### DÃ©placement de %s ###", jake.getNom()));
 			m.setAvatar(jake);
 			
 			jake.setResteAJouer(NB_COUPS);
@@ -79,12 +79,12 @@ public class TestGraphisme  {
 				m.requestFocusInWindow();
 				Thread.sleep(1000) ; 
 				
-				System.out.println(jake.getResteAJouer()+" coups à jouer");
+				System.out.println(jake.getResteAJouer()+" coups Ã  jouer");
 			}
 			
 			
 			//---------------------------DEPLACEMENT DE J2------------------------
-			System.out.println(String.format("### Déplacement de %s ###", mark.getNom()));
+			System.out.println(String.format("### DÃ©placement de %s ###", mark.getNom()));
 			
 			
 			m.setAvatar(mark);
@@ -96,18 +96,18 @@ public class TestGraphisme  {
 				m.setFocusable(true);
 				m.requestFocusInWindow();	
 				
-				System.out.println(mark.getResteAJouer()+" coups à jouer");
+				System.out.println(mark.getResteAJouer()+" coups Ã  jouer");
 			}
 			
                             
 		}
 		if (mark.course() < jake.course())
 		{
-			System.out.println(String.format("%s a parcouru plus de distance face à %s !",jake.getNom(),mark.getNom()));
+			System.out.println(String.format("%s a parcouru plus de distance face Ã  %s !",jake.getNom(),mark.getNom()));
 		}
 		else
 		{
-			System.out.println(String.format("%s a parcouru plus de distance face à %s !",mark.getNom(),jake.getNom()));
+			System.out.println(String.format("%s a parcouru plus de distance face Ã  %s !",mark.getNom(),jake.getNom()));
 		}
 	}
 
