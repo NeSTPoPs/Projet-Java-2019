@@ -1,0 +1,173 @@
+package monde;
+import java.util.ArrayList;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.*;
+
+import personnage.Avatar;
+
+public class Monde extends JPanel implements KeyListener {
+	
+	public static ArrayList<Item> listeItems = new ArrayList<Item>();
+	private static int taille;
+	private static int tailleCase;
+	private Avatar avatar;
+	
+	public static int getPositionAlea() {return (int)(Math.random()*taille);}
+	
+	public Monde(int taille, int tailleCase)
+	{
+		setPreferredSize(new Dimension(taille*tailleCase, taille*tailleCase));
+		this.taille     = taille;
+		this.tailleCase = tailleCase;
+		this.avatar = null;
+		addKeyListener(this);
+	}
+	
+	public void setAvatar(Avatar a) {
+		this.avatar = a;
+	}
+	public Avatar getAvatar() {
+		return this.avatar;
+	}
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		for (Item itemVoisin : listeItems)
+		{
+			if ( itemVoisin != null )
+				itemVoisin.dessiner(g, this);
+		}
+	}
+	
+	public void ajouterItem(Item item)
+	{
+		item.setX(Monde.getPositionAlea());
+		item.setY(Monde.getPositionAlea());
+		listeItems.add(item);
+	}
+	
+	public void supprimerItem(Item item)
+	{
+		if (listeItems.contains(item))
+		{
+			item.setX(-1);
+			item.setY(-1);
+			listeItems.remove(item);
+		}
+	}
+	
+	public Item chercher(int x, int y)
+	{
+		for (Item item : listeItems)
+		{
+			if (item.getX() == x && item.getY() == y)
+				return item;
+		}
+		return null;
+	}
+	
+	public int getTailleCase()
+	{
+		return Monde.tailleCase;
+	}
+	
+	public int getTaille()
+	{
+		return Monde.taille;
+	}
+	
+	public ArrayList<Item> getVoisins(Item item)
+	{
+		ArrayList<Item> listeVoisin = new ArrayList<Item>();
+		for (Item iFor : listeItems)
+		{
+			if (iFor != item)
+			{
+				if (iFor.distance(item) == 0)
+					listeVoisin.add(iFor);
+			}
+		}
+		return listeVoisin;
+	}
+	
+	private static String getNomCourt(String nom)
+	{
+		if (nom.length() >= 4)
+			return nom.substring(0, 4);
+		else
+		{
+			switch (nom.length()) {
+				case 0:
+					return "    ";
+				case 1:
+					return "  "+nom+" ";
+				case 2:
+					return " "+nom+" ";
+				case 3:
+					return nom +" ";
+				default:
+					return null;
+			}
+		}
+	}
+	
+	public void afficher()
+	{
+		String s = "     ";
+		for (int i = 0; i < Monde.taille; i++)
+		{
+			s += Monde.getNomCourt(""+i)+"|";
+		}
+		
+		for (int i = 0; i < Monde.taille; i++)
+		{
+			s += "\n"+Monde.getNomCourt(""+i)+"|";
+			for (int j = 0; j < Monde.taille; j++)
+			{
+				if (!(this.chercher(i,j) == null))
+					s += Monde.getNomCourt(this.chercher(i, j).getNom())+"|";
+				else 
+					s += Monde.getNomCourt("")+"|";
+			}
+		}
+		System.out.println(s);
+	}
+	
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int touche = e.getKeyCode();
+		int nbCoups = avatar.getResteAJouer()-1;
+		switch(touche) {
+			case KeyEvent.VK_UP:
+				if(avatar.monter())
+					this.repaint();
+					avatar.setResteAJouer(nbCoups);
+			case KeyEvent.VK_DOWN :
+				if(avatar.descendre())
+					this.repaint();
+					avatar.setResteAJouer(nbCoups);//avatar.getResteAJouer()-1);
+			case KeyEvent.VK_LEFT :
+				if(avatar.gauche())
+					avatar.setResteAJouer(nbCoups);
+					this.repaint();
+			case KeyEvent.VK_RIGHT :
+				if(avatar.droite())
+					avatar.setResteAJouer(nbCoups);
+					this.repaint();
+		}
+			avatar.rencontrerVoisins();
+			
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+	
+	}
+}
