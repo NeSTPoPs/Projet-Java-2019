@@ -60,7 +60,7 @@ public class Creature extends Personnage
 	
 	public void courir()
 	{
-		System.out.println(String.format("%s court à vitesse %.1f km/h avec %s\n",
+		System.out.println(String.format("%s court a vitesse %.1f km/h avec %s\n",
 				this.toString(), this.getVitesse(), this.leSac.toString()));
 	}
 }

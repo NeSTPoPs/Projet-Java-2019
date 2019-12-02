@@ -3,9 +3,9 @@ import java.util.ArrayList;
 
 public class Noms {
 	public final static String [] tabNoms =
-			       {"Jojo", "Bertrand", "Josette", "Gérard", "Adolf", "Bourpi", "Gloumax", "Frodon", "Micheline", "Ghislaine",
-					"Huguette", "Kozak", "Josiane", "Germaine" ,"Michel", "Michelle", "Joséphine", "Gertrude", "Bernard","Simone",
-					"Jacquie", "Kevin", "Rémi", "Jacqueline", "Guy", "Françoise", "Bernadette", "Josette", "Dieu", "Viviane"};
+			       {"Jojo", "Bertrand", "Josette", "Gerard", "Adolf", "Bourpi", "Gloumax", "Frodon", "Micheline", "Ghislaine",
+					"Huguette", "Kozak", "Josiane", "Germaine" ,"Michel", "Michelle", "Josephine", "Gertrude", "Bernard","Simone",
+					"Jacquie", "Kevin", "Remi", "Jacqueline", "Guy", "Francoise", "Bernadette", "Josette", "Dieu", "Viviane"};
 	
 	private static ArrayList<String> tabNomsDonne        = new ArrayList<String>();
 	private static ArrayList<Integer>    tabCptNomsDonne = new ArrayList<Integer>();

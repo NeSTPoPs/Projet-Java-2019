@@ -23,8 +23,8 @@ public class CaseBoost extends CaseSpeciale {
 	@Override
 	public void effet(Avatar a) {
 		
-		// Le personnage a deux déplacements supplémentaires
-		a.setResteAJouer(a.getResteAJouer()+3);
+		// Le personnage a deux deplacements supplementaires
+		a.setResteAJouer(a.getResteAJouer()+2);
 	
 	}
 	public void dessiner(Graphics g, Monde m) {
