@@ -31,7 +31,7 @@ public class Avatar extends Personnage
 		this.listeAcc  = new ArrayList<Acc>();
 		this.monde = monde;
 		resteAJouer = 0;
-		this.creatureImage = tabCreatureImage[(int)(Math.random()*2)];
+		this.avatarImage = tabCreatureImage[(int)(Math.random()*2)];
 		
 	}
 	
