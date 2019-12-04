@@ -71,17 +71,30 @@ public class Avatar extends Personnage
 		}
 		else
 		{	
-			System.out.println(String.format("%s donne %s à %s", this.getNom(), listeAcc.get(0).getNom(), c.getNom()));
+			System.out.println(String.format("%s donne %s Ã  %s", this.getNom(), listeAcc.get(0).getNom(), c.getNom()));
 			if (listeAcc.get(0).getPoids()>0.5)
-				this.devenirAmi(c);
+				if (c instanceof Enchanteresse) {
+					if(listeAcc.get(0) instanceof Pomme) {
+						this.devenirAmi(c);
+						c.ajouter(listeAcc.get(0));
+						listeAcc.remove(0);
+						return;
+					}
+					else {
+						return;
+					}
+				}
+			
+			this.devenirAmi(c);
 			c.ajouter(listeAcc.get(0));
 			listeAcc.remove(0);
 		}
 	}
 	
+	
 	public double course()
 	{
-		System.out.println("--------------"+this.getNom()+" fait courir son équipe !--------------");
+		System.out.println("--------------"+this.getNom()+" fait courir son Ã©quipe !--------------");
 		double distance = 0;
 		for (Creature c : listeAmis)
 		{
@@ -142,7 +155,7 @@ public class Avatar extends Personnage
 
 	//////
 	////
-	//       Fonctions de déplacement
+	//       Fonctions de dÃ©placement
 	////
 	//////
 
@@ -200,7 +213,7 @@ public class Avatar extends Personnage
 //			case KeyEvent.VK_UP:
 //				if(this.monter())
 //				{
-//					System.out.println("Coordonnée Y :" +this.getY());
+//					System.out.println("CoordonnÃ©e Y :" +this.getY());
 //					this.setResteAJouer(this.resteAJouer - 1);
 //					this.monde.repaint();
 //					break;
@@ -231,7 +244,7 @@ public class Avatar extends Personnage
 //				break;
 //		}
 //			this.rencontrerVoisins();
-//			System.out.println(this.resteAJouer+" coups a  jouer");
+//			System.out.println(this.resteAJouer+" coups aÂ  jouer");
 //	}
 //	@Override
 //	public void keyReleased(KeyEvent arg0) {
