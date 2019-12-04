@@ -96,13 +96,17 @@ public class Avatar extends Personnage
 	{
 		System.out.println("--------------"+this.getNom()+" fait courir son équipe !--------------");
 		double distance = 0;
+		double multiplier = 1;
 		for (Creature c : listeAmis)
 		{
+			if( c instanceof Enchanteresse)
+				multiplier += 0.5;
+				
 			c.manger();
 			c.courir();
 			distance += c.getVitesse() * 1; //-----------------Distance(km) = Vitesse(km/h) * Temps(h)
 		}
-		return distance;
+		return distance * (multiplier);
 	}
 	
 	public Creature getCreaturePlusRapide()
