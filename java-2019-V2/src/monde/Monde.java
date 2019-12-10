@@ -166,6 +166,7 @@ public class Monde extends JPanel implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if (this.avatar == null) return;
 		switch(e.getKeyCode()) {
 			case KeyEvent.VK_UP:
 				if(avatar.monter())

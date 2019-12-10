@@ -1,6 +1,5 @@
 
-
-
+import java.util.Scanner;
 import javax.swing.*;
 import items.*;
 import monde.*;
@@ -13,27 +12,6 @@ public class TestGraphisme  {
 	private static final int NB_CASES=15;
 	private static final int NB_COUPS=5;
 	
-	
-	public static void ajouterBoucle(Monde monde, String item, int iter)
-	{
-		for (int i = 0; i < iter; i++)
-		{
-			if(item == "Case")
-				monde.ajouterItem(new CaseNormale());
-		  if(item == "Boost")
-				monde.ajouterItem(new CaseBoost());
-			if (item == "Pomme")
-				monde.ajouterItem(new Pomme());
-			if (item == "Cassoulet")
-				monde.ajouterItem(new Cassoulet());
-			if (item == "Poubelle")
-				monde.ajouterItem(new Poubelle());
-			if (item == "Creature")
-				monde.ajouterItem(new Creature());
-		
-		}
-	}
-	
 	public static void main( String [ ] args ) throws InterruptedException {
 		// Creation fenetre graphique et ses caracteristiques
 		JFrame f = new JFrame () ;
@@ -42,63 +20,75 @@ public class TestGraphisme  {
 		                                                  // Creation du monde (qui est un panneau )
 		Monde m = new Monde(NB_CASES,TAILLE_CASE) ;
 		
-	
-		ajouterBoucle(m, "Case", NB_CASES*TAILLE_CASE);
-		ajouterBoucle(m, "Poubelle", (int)(Math.random()*10+10));
-		ajouterBoucle(m, "Pomme", (int)(Math.random()*10+10));
-		ajouterBoucle(m, "Cassoulet", (int)(Math.random()*10+10));
-		ajouterBoucle(m, "Creature", (int)(Math.random()*10+2));
-		ajouterBoucle(m, "Boost", (int)(Math.random()*10+5));
-		
+		m.ajouterBoucle(m, new Poubelle(), (int)(Math.random()*10+10));
+		m.ajouterBoucle(m, new Pomme(), (int)(Math.random()*10+10));
+		m.ajouterBoucle(m, new Cassoulet(), (int)(Math.random()*10+10));
+		m.ajouterBoucle(m, new Creature(), (int)(Math.random()*10+2));
+		m.ajouterBoucle(m, new CaseBoost(), (int)(Math.random()*10+5));
 		
 		f.setContentPane (m) ;                            //Ajout du monde a la fenetre
 		f.pack () ;                                         // Adaptation de la fenetre au panneau
 		f.setVisible ( true ) ;
 		
-		Avatar jake=new Avatar ("Jake" ,79.5 ,m) ;          // ajoute Jake dans le monde
-		Avatar mark=new Avatar ("Mark" ,89.5 ,m) ;
-	
-		m.setAvatar(jake);
-		m.ajouterItem(jake);
-		m.ajouterItem(mark);
-		
-	
-		
-		for ( int i =0;i <10; i++) {
-		
-			//---------------------------DEPLACEMENT DE J1------------------------
-			System.out.println(String.format("### Deplacement de %s ###", jake.getNom()));
-			m.setAvatar(jake);
-			m.getAvatar().setImage(m.getAvatar().avatarImages[2]);
-			jake.setResteAJouer(NB_COUPS);
-			
-			while(jake.getResteAJouer() > 0) {
-				m.setFocusable(true);
-				m.requestFocusInWindow();
-				;
-			}
-			m.getAvatar().setImage(m.getAvatar().avatarImages[1]);
-			
-			//---------------------------DEPLACEMENT DE J2------------------------
-			System.out.println(String.format("### Deplacement de %s ###", mark.getNom()));
-			m.setAvatar(mark);
-			m.getAvatar().setImage(m.getAvatar().avatarImages[2]);
-			mark.setResteAJouer(NB_COUPS);
-			
-			while(mark.getResteAJouer() > 0) {
-				m.setFocusable(true);
-				m.requestFocusInWindow();	
-			}
-     m.getAvatar().setImage(m.getAvatar().avatarImages[0]);                      
-		}
-		if (mark.course() < jake.course())
+		int nbJoueur = 0;
+		while (nbJoueur < 1)
 		{
-			System.out.println(String.format("%s a parcouru plus de distance face a %s !",jake.getNom(),mark.getNom()));
+			Scanner sc  = new Scanner(System.in);
+			System.out.println("Veuillez indiquer le nombre de joueurs (>=1): ");
+			if (sc.hasNextInt())
+			{
+				
+				nbJoueur = sc.nextInt();
+			}
 		}
-		else
+		Avatar[] tabAvatar = new Avatar[nbJoueur];
+		for (int i = 0; i < nbJoueur; i++)
 		{
-			System.out.println(String.format("%s a parcouru plus de distance face a %s !",mark.getNom(),jake.getNom()));
+			Scanner sc  = new Scanner(System.in);
+			String name = "Bob";
+			System.out.println("Nom J"+i +" :");
+			if (sc.hasNext())
+				name = sc.nextLine();
+			tabAvatar[i]   = new Avatar(name , Math.random()*100 + 50 ,m);
+			
+			m.ajouterItem(tabAvatar[i]);
+			m.repaint();
+			if (i == nbJoueur - 1)
+				sc.close();
 		}
+		for (int tour = 0; tour < 5; tour++) {
+			for ( int i =0;i < nbJoueur; i++) {
+			
+				//---------------------------DEPLACEMENT DE JOUEUR------------------------
+				System.out.println(String.format("### Deplacement de %s ###", tabAvatar[i].getNom()));
+				m.setAvatar(tabAvatar[i]);
+				m.getAvatar().setImage(Avatar.avatarImages[2]);
+				m.repaint();
+				tabAvatar[i].setResteAJouer(NB_COUPS);
+				
+				while(tabAvatar[i].getResteAJouer() > 0) {
+					m.setFocusable(true);
+					m.requestFocusInWindow();
+					;
+				}
+				m.getAvatar();
+				m.getAvatar().setImage(Avatar.avatarImages[1]);
+			}
+		}
+		m.setAvatar(null);
+		Avatar gagnant  = null;
+		double distanceMax = 0;
+        for (int i = 0; i < tabAvatar.length; i++)
+        {
+        	double distance = tabAvatar[i].course();
+        	if (distance > distanceMax)
+        	{
+        		distanceMax = distance;
+        		gagnant     = tabAvatar[i];
+        	}
+        }
+		System.out.println(String.format("%s gagne la course !",gagnant.getNom()));
+		
 	}
 
 
