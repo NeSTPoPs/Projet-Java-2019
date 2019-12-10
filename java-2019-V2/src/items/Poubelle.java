@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
+import monde.Item;
 import monde.Monde;
 
 public class Poubelle extends Acc {
@@ -25,5 +26,10 @@ public class Poubelle extends Acc {
 		int tc = m.getTailleCase();
 		g.setColor(Color.GRAY);
 		g.drawImage(poubelleImage,this.getX()*tc, this.getY()*tc, tc,tc, m);
+	}
+
+	@Override
+	public Item getInstance() {
+		return new Poubelle();
 	}
 }

@@ -1,8 +1,6 @@
 package items;
 
-import java.awt.Graphics;
-
-import monde.Monde;
+import monde.Item;
 
 public class Sac extends Acc
 {
@@ -58,7 +56,7 @@ public class Sac extends Acc
     	Acc a = this.tab[i];
     	int taille = this.size();
     	this.tab[i] = null;
-    	for (int j = i + 1; j < taille; j++ ) //----------------------On déplace les éléments dans tab vers la gauche
+    	for (int j = i + 1; j < taille; j++ ) //----On deplace les elements dans tab vers la gauche
     	{
     		if (this.tab[j] == null)
     			return a;
@@ -88,5 +86,10 @@ public class Sac extends Acc
     	}
     	return s;
     }
+
+	@Override
+	public Item getInstance() {
+		return new Sac();
+	}
  
 } 

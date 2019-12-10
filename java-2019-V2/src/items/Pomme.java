@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
+import monde.Item;
 import monde.Monde;
 
 public class Pomme extends Acc implements Mangeable
@@ -34,5 +35,10 @@ public class Pomme extends Acc implements Mangeable
 	public String toString()
 	{
 		return super.toString() + String.format(" %.1fcm", this.rayon);
+	}
+
+	@Override
+	public Item getInstance() {
+		return new Pomme();
 	}
 } 

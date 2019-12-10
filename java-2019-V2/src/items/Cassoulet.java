@@ -1,20 +1,14 @@
 package items;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
+import monde.Item;
 import monde.Monde;
 
 public class Cassoulet extends Acc implements Mangeable
 {
 	private double poids;
-	private static Image cassoulet;
 	public static final Image cassouletImage = java.awt.Toolkit.getDefaultToolkit().getImage("resource/Cassoulet.png");
 	public Cassoulet(double poids)
 	{
@@ -40,6 +34,11 @@ public class Cassoulet extends Acc implements Mangeable
 	public String toString()
 	{
 		return super.toString() + String.format(" %.1fkg", this.poids);
+	}
+
+	@Override
+	public Item getInstance() {
+		return new Cassoulet();
 	}
 
 } 

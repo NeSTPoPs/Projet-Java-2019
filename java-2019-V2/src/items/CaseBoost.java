@@ -1,9 +1,9 @@
 package items;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
+import monde.Item;
 import monde.Monde;
 import personnage.Avatar;
 
@@ -23,14 +23,19 @@ public class CaseBoost extends CaseSpeciale {
 	@Override
 	public void effet(Avatar a) {
 		
-		// Le personnage a deux déplacements supplémentaires
-		a.setResteAJouer(a.getResteAJouer()+3);
+		// Le personnage a deux deplacements supplementaires
+		a.setResteAJouer(a.getResteAJouer()+2);
 	
 	}
 	public void dessiner(Graphics g, Monde m) {
 		int tc = m.getTailleCase();
 		//g.setColor(Color.GRAY);
 		g.drawImage(image,this.getX()*tc, this.getY()*tc, tc,tc, m);
+	}
+
+	@Override
+	public Item getInstance() {
+		return new CaseBoost();
 	}
 
 }

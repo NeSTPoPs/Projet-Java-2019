@@ -6,7 +6,15 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
+
+
+import items.CaseBoost;
+import items.CaseNormale;
+import items.Cassoulet;
+import items.Pomme;
+import items.Poubelle;
 import personnage.Avatar;
+import personnage.Creature;
 
 public class Monde extends JPanel implements KeyListener {
 	
@@ -20,10 +28,29 @@ public class Monde extends JPanel implements KeyListener {
 	public Monde(int taille, int tailleCase)
 	{
 		setPreferredSize(new Dimension(taille*tailleCase, taille*tailleCase));
-		this.taille     = taille;
-		this.tailleCase = tailleCase;
+		Monde.taille     = taille;
+		Monde.tailleCase = tailleCase;
 		this.avatar = null;
 		addKeyListener(this);
+		for (int i = 0; i < taille; i++)
+		{
+			for (int j = 0; j < taille; j++)
+			{
+				CaseNormale c = new CaseNormale();
+				this.ajouterItem(c);
+				c.setX(i);
+				c.setY(j);
+			}
+		}
+			
+	}
+	
+	public void ajouterBoucle(Monde monde,Item item, int iter)
+	{
+		for (int i = 0 ; i < iter; i++)
+		{
+			this.ajouterItem(item.getInstance());
+		}
 	}
 	
 	public void setAvatar(Avatar a) {
@@ -139,27 +166,37 @@ public class Monde extends JPanel implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int touche = e.getKeyCode();
-		int nbCoups = avatar.getResteAJouer()-1;
-		switch(touche) {
+		switch(e.getKeyCode()) {
 			case KeyEvent.VK_UP:
 				if(avatar.monter())
+				{
 					this.repaint();
-					avatar.setResteAJouer(nbCoups);
+					avatar.setResteAJouer(avatar.getResteAJouer()-1);
+				}
+				break;
 			case KeyEvent.VK_DOWN :
 				if(avatar.descendre())
+				{
 					this.repaint();
-					avatar.setResteAJouer(nbCoups);//avatar.getResteAJouer()-1);
+					avatar.setResteAJouer(avatar.getResteAJouer()-1);
+				}
+				break;
 			case KeyEvent.VK_LEFT :
 				if(avatar.gauche())
-					avatar.setResteAJouer(nbCoups);
+				{
+					avatar.setResteAJouer(avatar.getResteAJouer()-1);
 					this.repaint();
+				}
+				break;
 			case KeyEvent.VK_RIGHT :
 				if(avatar.droite())
-					avatar.setResteAJouer(nbCoups);
+				{
+					avatar.setResteAJouer(avatar.getResteAJouer()-1);
 					this.repaint();
+				}
+				break;
 		}
-			avatar.rencontrerVoisins();
+	    System.out.println(avatar.getResteAJouer()+" coups a jouer");
 			
 	}
 	@Override

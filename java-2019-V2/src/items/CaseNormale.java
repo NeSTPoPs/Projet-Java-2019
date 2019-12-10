@@ -3,6 +3,7 @@ package items;
 import java.awt.Graphics;
 import java.awt.Image;
 
+import monde.Item;
 import monde.Monde;
 import personnage.Avatar;
 
@@ -28,6 +29,11 @@ public class CaseNormale extends CaseSpeciale {
 		int tc = m.getTailleCase();
 		//g.setColor(Color.GRAY);
 		g.drawImage(image,this.getX()*tc, this.getY()*tc, tc,tc, m);
+	}
+
+	@Override
+	public Item getInstance() {
+		return new CaseNormale();
 	}
 
 }

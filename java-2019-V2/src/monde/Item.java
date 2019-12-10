@@ -1,11 +1,6 @@
 package monde;
 
 import java.awt.*;
-import javax.swing.*;
-import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 
 public abstract class Item 
 {
@@ -24,6 +19,8 @@ public abstract class Item
 	{
 		this(nom, -1 , -1);
 	}
+	
+	public abstract Item getInstance();
 	
 	public int getX(){return this.x;}
 	public int getY(){return this.y;}
