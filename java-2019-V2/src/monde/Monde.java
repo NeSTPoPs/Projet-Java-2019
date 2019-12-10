@@ -146,29 +146,29 @@ public class Monde extends JPanel implements KeyListener {
 				{
 					this.repaint();
 					avatar.setResteAJouer(avatar.getResteAJouer()-1);
-					break;
 				}
+				break;
 			case KeyEvent.VK_DOWN :
 				if(avatar.descendre())
 				{
 					this.repaint();
 					avatar.setResteAJouer(avatar.getResteAJouer()-1);
-					break;
 				}
+				break;
 			case KeyEvent.VK_LEFT :
 				if(avatar.gauche())
 				{
 					avatar.setResteAJouer(avatar.getResteAJouer()-1);
 					this.repaint();
-					break;
 				}
+				break;
 			case KeyEvent.VK_RIGHT :
 				if(avatar.droite())
 				{
 					avatar.setResteAJouer(avatar.getResteAJouer()-1);
 					this.repaint();
-					break;
 				}
+				break;				
 		}
 	    System.out.println(avatar.getResteAJouer()+" coups a jouer");
 			
