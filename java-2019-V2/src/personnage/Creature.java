@@ -12,14 +12,14 @@ public class Creature extends Personnage
 {
 	private Sac leSac;
 	public static final Image[] tabCreatureImage = {java.awt.Toolkit.getDefaultToolkit().getImage("resource/Creature1.png"),
- java.awt.Toolkit.getDefaultToolkit().getImage("resource/enchanteresse.png"),
-};
+											   java.awt.Toolkit.getDefaultToolkit().getImage("resource/Creature2.png"),
+			                                   java.awt.Toolkit.getDefaultToolkit().getImage("resource/Creature3.png")};
 	private Image creatureImage;
 	public Creature ()
 	{
 		super(Noms.getNom());
 		this.leSac = new Sac();
-		this.creatureImage = tabCreatureImage[(int)(Math.random()*2)];
+		this.creatureImage = tabCreatureImage[(int)(Math.random()*3)];
 	}
 	public void dessiner(Graphics g, Monde m) {
 		int tc = m.getTailleCase();
@@ -60,7 +60,7 @@ public class Creature extends Personnage
 	
 	public void courir()
 	{
-		System.out.println(String.format("%s court a vitesse %.1f km/h avec %s\n",
+		System.out.println(String.format("%s court à vitesse %.1f km/h avec %s\n",
 				this.toString(), this.getVitesse(), this.leSac.toString()));
 	}
 }

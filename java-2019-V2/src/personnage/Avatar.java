@@ -5,28 +5,22 @@ import monde.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 
 
-public class Avatar extends Personnage
+public class Avatar extends Personnage 
 {
 	private ArrayList<Creature> listeAmis; 
 	private ArrayList<Acc>      listeAcc ;
 	private Monde monde;
-	public static final Image[] avatarImages ={ java.awt.Toolkit.getDefaultToolkit().getImage("resource/avatar2.png"),
-	java.awt.Toolkit.getDefaultToolkit().getImage("resource/avatar3.png"),
-	java.awt.Toolkit.getDefaultToolkit().getImage("resource/avatarFocused.png")} ;
-	
-	private Image image;
+	public static final Image avatarImage = java.awt.Toolkit.getDefaultToolkit().getImage("resource/Avatar.png");
 	private int resteAJouer;
 	
 	public void dessiner(Graphics g, Monde m) {
 		int tc = m.getTailleCase();
 		g.setColor(new Color(255,0,0));
-		g.drawImage(this.image,this.getX()*tc, this.getY()*tc, tc,tc, m);
+		g.drawImage(avatarImage,this.getX()*tc, this.getY()*tc, tc,tc, m);
 	}
 	public Avatar(String nom, double poids, Monde monde)
 	{
@@ -35,7 +29,6 @@ public class Avatar extends Personnage
 		this.listeAcc  = new ArrayList<Acc>();
 		this.monde = monde;
 		resteAJouer = 0;
-		this.image=this.avatarImages[(int)(Math.random()*2)];
 		
 	}
 	
@@ -45,15 +38,6 @@ public class Avatar extends Personnage
 	public void setResteAJouer(int n) {
 		resteAJouer = n;
 	}
-	
-	
-	public void setImage(Image i){
-	  
-	  this.image = i;
-	
-	}
-	
-	
 	public boolean estAmi(Creature c)
 	{
 		return this.listeAmis.contains(c);
@@ -85,7 +69,7 @@ public class Avatar extends Personnage
 		}
 		else
 		{	
-			System.out.println(String.format("%s donne %s a %s", this.getNom(), listeAcc.get(0).getNom(), c.getNom()));
+			System.out.println(String.format("%s donne %s à %s", this.getNom(), listeAcc.get(0).getNom(), c.getNom()));
 			if (listeAcc.get(0).getPoids()>0.5)
 				this.devenirAmi(c);
 			c.ajouter(listeAcc.get(0));
@@ -95,7 +79,7 @@ public class Avatar extends Personnage
 	
 	public double course()
 	{
-		System.out.println("--------------"+this.getNom()+" fait courir son equipe !--------------");
+		System.out.println("--------------"+this.getNom()+" fait courir son équipe !--------------");
 		double distance = 0;
 		for (Creature c : listeAmis)
 		{
@@ -148,7 +132,7 @@ public class Avatar extends Personnage
 					this.rencontrer((Creature) i);
 				if (i instanceof Avatar)
 					System.out.println(String.format("%s et %s se saluent avant la course", this.getNom(), i.getNom()));
-				if (i instanceof CaseBoost)
+				if (i instanceof CaseSpeciale)
 					((CaseSpeciale)i).effet(this);
 			}
 		}
@@ -156,7 +140,7 @@ public class Avatar extends Personnage
 
 	//////
 	////
-	//       Fonctions de deplacement
+	//       Fonctions de déplacement
 	////
 	//////
 
@@ -164,31 +148,33 @@ public class Avatar extends Personnage
 	
 	public boolean descendre()
 	{
-		if( (this.getY()+1) > monde.getTaille()-1) 
-			return false;
+		//if( (this.getY()+1) < monde.getTaille()-1) 
+	//		return false;
 		int y = this.getY()+1 ;
 		this.setY(y);
-		this.rencontrerVoisins();
+	//this.setX(this.getX()+1);
+		
 		return true;
 	}
 	
 	public boolean monter()
 	{
-		if( (this.getY()-1) < 0) 
-			return false;
-		int y = this.getY()-1 ;
+		//if( (this.getY()-1) < 0) 
+			//return false;
+		int y = this.getY()-2 ;
 		this.setY(y);
-		this.rencontrerVoisins();
+	//	this.setX(this.getX()+1);
+		
 		return true;
 	}
 	
 	public boolean gauche()
 	{
-		if( this.getX() - 1 < 0)
-			return false;
-		int x = this.getX() - 1;
+	
+		
+		int x = this.getX()-1;
 		this.setX(x);
-		this.rencontrerVoisins();
+		
 		return true;
 	}
 	
@@ -197,7 +183,6 @@ public class Avatar extends Personnage
 		if( this.getX()+1 > monde.getTaille()-1)
 			return false;
 		this.setX(this.getX()+1);
-		this.rencontrerVoisins();
 		return true;
 	}
 	
@@ -206,5 +191,7 @@ public class Avatar extends Personnage
 	{
 		return String.format("%s %d ami(s) %d accessoire(s)", super.toString(), listeAmis.size(), listeAcc.size() );
 	}
+
+	
 	
 }
