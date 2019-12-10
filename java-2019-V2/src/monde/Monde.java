@@ -140,37 +140,26 @@ public class Monde extends JPanel implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int touche = e.getKeyCode();
-		switch(e.getKeyCode()) {
+		int nbCoups = avatar.getResteAJouer()-1;
+		switch(touche) {
 			case KeyEvent.VK_UP:
 				if(avatar.monter())
-				{
 					this.repaint();
-					avatar.setResteAJouer(avatar.getResteAJouer()-1);
-				}
-				break;
+					avatar.setResteAJouer(nbCoups);
 			case KeyEvent.VK_DOWN :
 				if(avatar.descendre())
-				{
 					this.repaint();
-					avatar.setResteAJouer(avatar.getResteAJouer()-1);
-				}
-				break;
+					avatar.setResteAJouer(nbCoups);//avatar.getResteAJouer()-1);
 			case KeyEvent.VK_LEFT :
 				if(avatar.gauche())
-				{
-					avatar.setResteAJouer(avatar.getResteAJouer()-1);
+					avatar.setResteAJouer(nbCoups);
 					this.repaint();
-				}
-				break;
 			case KeyEvent.VK_RIGHT :
 				if(avatar.droite())
-				{
-					avatar.setResteAJouer(avatar.getResteAJouer()-1);
+					avatar.setResteAJouer(nbCoups);
 					this.repaint();
-				}
-				break;				
 		}
-	    System.out.println(avatar.getResteAJouer()+" coups a jouer");
+			avatar.rencontrerVoisins();
 			
 	}
 	@Override
