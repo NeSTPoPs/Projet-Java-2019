@@ -52,12 +52,7 @@ public class Monde extends JPanel implements KeyListener {
 		}
 	}
 	
-	public void setAvatar(Avatar a) {
-		this.avatar = a;
-	}
-	public Avatar getAvatar() {
-		return this.avatar;
-	}
+
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
@@ -162,7 +157,12 @@ public class Monde extends JPanel implements KeyListener {
 		System.out.println(s);
 	}
 	
-
+	
+	
+	
+/////////////////////////////    A   J   O   U   T   S    /////////////////////////////////
+	
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (this.avatar == null) return;
@@ -206,5 +206,17 @@ public class Monde extends JPanel implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 	
+	}
+	
+	
+	// On a besoin de l'attribut avatar pour gérer ses déplacement,
+	// entre l'actualisation de l'image, et l'interface keyListener() q
+	// qui ne peut être implémentée qu'avec un objet qui peut obtenir le focus 
+
+	public void setAvatar(Avatar a) {
+		this.avatar = a;
+	}
+	public Avatar getAvatar() {
+		return this.avatar;
 	}
 }

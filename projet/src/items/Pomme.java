@@ -37,6 +37,10 @@ public class Pomme extends Acc implements Mangeable
 		return super.toString() + String.format(" %.1fcm", this.rayon);
 	}
 
+	
+/////////////////////////////    A   J   O   U   T   S    /////////////////////////////////	
+	
+	
 	@Override
 	public Item getInstance() {
 		return new Pomme();

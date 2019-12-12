@@ -17,7 +17,7 @@ public class Creature extends Personnage
 	{
 		super(Noms.getNom());
 		this.leSac = new Sac();
-		this.creatureImage = java.awt.Toolkit.getDefaultToolkit().getImage("resource/CreaturePoubelle.png");
+		this.creatureImage = java.awt.Toolkit.getDefaultToolkit().getImage("resource/Creature.png");
 	}
 	
 	public void dessiner(Graphics g, Monde m) {

@@ -29,7 +29,6 @@ public class Enchanteresse extends Creature {
 	@Override
 	public boolean accepte(Acc item) 
 	{
-		System.out.println("oui");
 		return (item instanceof PommeDoree);
 	}
 	

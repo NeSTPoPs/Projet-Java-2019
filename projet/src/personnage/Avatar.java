@@ -41,13 +41,7 @@ public class Avatar extends Personnage
 		g.drawImage(this.image,this.getX()*tc, this.getY()*tc, tc,tc, m);
 	}
 	
-	public int getResteAJouer() {
-		return resteAJouer;
-	}
-	public void setResteAJouer(int n) {
-		resteAJouer = n;
-	}
-	
+
 	
 	public void setImage(Image i){
 	  
@@ -160,13 +154,13 @@ public class Avatar extends Personnage
 		}
 	}
 
-	//////
-	////
+	
+	
+	
+/////////////////////////////    A   J   O   U   T   S    /////////////////////////////////	
+	
+	
 	//       Fonctions de deplacement
-	////
-	//////
-
-
 	
 	public boolean descendre()
 	{
@@ -215,6 +209,14 @@ public class Avatar extends Personnage
 	@Override
 	public Item getInstance() {
 		return null;
+	}
+	
+	
+	public int getResteAJouer() {
+		return resteAJouer;
+	}
+	public void setResteAJouer(int n) {
+		resteAJouer = n;
 	}
 	
 }

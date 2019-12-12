@@ -6,25 +6,17 @@ import monde.*;
 import personnage.Avatar;
 import personnage.Creature;
 import personnage.Enchanteresse;
+import personnage.Recycleur;
 
 
 public class TestGraphisme  {
-	private static final int TAILLE_CASE=60;
-	private static final int NB_CASES=15;
+	private static final int TAILLE_CASE=100;
+	private static final int NB_CASES=10;
 	private static final int NB_COUPS=5;
 	
 	public static void main( String [ ] args ) throws InterruptedException {
 		
 		
-////////////////////////////////////////////
-		
-		//   //   //   //  /////////
-		//   ///  //   //     //
-		//   // / //   //     //
-		//   //  ///   //     //
-		//   //   //   //     //
-		
-////////////////////////////////////////////
 		
 
 		JFrame f = new JFrame () ;
@@ -37,8 +29,9 @@ public class TestGraphisme  {
 		m.ajouterBoucle(m, new Poubelle(), (int)(Math.random()*10+10));
 		m.ajouterBoucle(m, new Pomme(), (int)(Math.random()*10+10));
 		m.ajouterBoucle(m, new PommeDoree(), (int)(Math.random()*2+1));
-		m.ajouterBoucle(m, new Enchanteresse(), (int)Math.random()*2+1);
 		m.ajouterBoucle(m, new Creature(), (int)(Math.random()*10+2));
+		m.ajouterBoucle(m, new Recycleur(), (int)(Math.random()*5+2));
+		m.ajouterBoucle(m, new Enchanteresse(), (int)Math.random()*2+1);
 		
 		f.setContentPane (m) ;                            //Ajout du monde a la fenetre
 		f.pack () ;                                         // Adaptation de la fenetre au panneau
@@ -70,6 +63,11 @@ public class TestGraphisme  {
 			if (i == nbJoueur - 1)
 				sc.close();
 		}
+		
+		
+		
+		
+		
 		for (int tour = 0; tour < 5; tour++) {
 			for ( int i =0;i < nbJoueur; i++) {
 			
@@ -81,14 +79,22 @@ public class TestGraphisme  {
 				tabAvatar[i].setResteAJouer(NB_COUPS);
 				
 				while(tabAvatar[i].getResteAJouer() > 0) {
+					
 					m.setFocusable(true);
 					m.requestFocusInWindow();
+					
 					;
 				}
 				m.getAvatar();
 				m.getAvatar().setImage(Avatar.avatarImages[1]);
 			}
 		}
+		
+		
+		
+		
+		
+		
 		m.setAvatar(null);
 		Avatar gagnant  = null;
 		double distanceMax = 0;
