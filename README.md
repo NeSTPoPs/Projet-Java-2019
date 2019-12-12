@@ -1,7 +1,7 @@
 Par Quentin Bellut et Matthieu de Castelbajac
 # NOM DU JEU
 
-![image](https://user-images.githubusercontent.com/47456539/70673378-af43be00-1c82-11ea-8b89-ab25a0169356.PNG)
+![image](https://user-images.githubusercontent.com/47456539/70750135-166a7c80-1d2e-11ea-93e0-5a05082804fa.PNG)
 
 
 #### Résumé : Création d'un mini jeu vidéo sous Java dans l'optique d'exploiter les outils de la programmation orientée objet.
