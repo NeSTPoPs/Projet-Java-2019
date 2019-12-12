@@ -1,7 +1,7 @@
 Par Quentin Bellut et Matthieu de Castelbajac
 # NOM DU JEU
 Projet duo LU2IN002
-![alt text](https://raw.githubusercontent.com/NeSTPoPs/Projet-Java-2019/branch/image.png)
+
 #### Résumé : Création d'un mini jeu vidéo sous Java dans l'optique d'exploiter les outils de la programmation orientée objet.
          
 ## Principe et règles du jeu : (2 joueurs)
