@@ -1,6 +1,7 @@
 Par Quentin Bellut et Matthieu de Castelbajac
 # NOM DU JEU
-Projet duo LU2IN002
+
+![image](https://user-images.githubusercontent.com/47456539/70671291-d5b22b00-1c7b-11ea-95f2-9dd5f688013d.PNG)
 
 #### Résumé : Création d'un mini jeu vidéo sous Java dans l'optique d'exploiter les outils de la programmation orientée objet.
          
