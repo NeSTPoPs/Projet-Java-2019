@@ -24,7 +24,7 @@ Par Quentin Bellut et Matthieu de Castelbajac
   * La pomme dorée : la pommme dorée sert à recruter L'Enchanteresse *(voir ci-dessous)*. Elle ne pèse rien et n'a donc pas d'effet sur les autres créatures.
   * Les poubelles : les poubelles pèsent plus lourd et désavantagent les créatures, sauf les recycleurs qui en tirent de grands bénéfices.
   #### Q18 : Autres items
-  Ajouts des cases spéciales:
+  Ajouts des cases spéciales (Items à deux niveaux d'héritage) :
   * Cases Normales : elles servent à stocker l'image des cases et ses coordonnées. Elle permettent d'afficher le plateau de jeu (l'arrière plan).
   * Cases Boost : elles permettent au joueur qui s'y trouve ou qui passe dessus de gagner un bonus de déplacement pendant son tour.
   
@@ -38,14 +38,13 @@ Par Quentin Bellut et Matthieu de Castelbajac
   ### Monde  
   #### Déplacements
   Ajout de l'interface KeyListener() 
-  :warning: pas optimisée et risquée...
+  :warning: non optimale 
   
-  Ajout d'un attribut Avatar
-  ...
+  En effet, le KeyListener requiert le focus (l'attention) d'une instance précise -- ici notre monde -- et ne peut donc déplacer qu'un objet à la fois. Cela à nécessité l'ajout d'un attribut Avatar pour le monde, afin de gérer les multiples déplacements.
+  
   ### Main
   #### Génération du monde
-  * Ajout méthode getInstance : à complétér .........................
-  * ...
-  #### Gestion des avatars 
-  ...
+  * Ajout méthode getInstance : Permet d'éviter une duplication du code lors de la génération des items, et de leur ajout dans le monde.
+  ### Fontionnement du jeu
+  * Ajout d'un menu textuel qui permet de choisir le nombre de joueurs et leurs noms. Le jeu devient donc jouable de 1 à X joueurs.
   
