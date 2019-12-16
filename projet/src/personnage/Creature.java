@@ -76,6 +76,8 @@ public class Creature extends Personnage
 	}
 	
 	public boolean accepte(Acc item) {
+		if (i instanceof Poubelle)
+			return False;
 		return (item.getPoids()>0.5);
 	}
 }
