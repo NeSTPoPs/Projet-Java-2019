@@ -38,10 +38,8 @@ Par Quentin Bellut et Matthieu de Castelbajac
   ### Monde  
   #### Déplacements
   Ajout de l'interface KeyListener() 
-  :warning: non optimale 
-  
-  #### Méthode pour se déplacer:  
-  KeyListener requiert le focus (l'attention) d'une instance précise -- ici notre monde -- et ne peut donc déplacer qu'un objet à la fois. Cela à nécessité l'ajout d'un attribut Avatar pour le monde, afin de gérer les multiples déplacements. Si aucun avatar ne peut se déplacer (exemple à la fin de la partie), cette variable est vide.  
+  :warning: non optimale   
+  KeyListener requiert le focus (l'attention) d'une instance précise -- ici notre monde -- et ne peut donc déplacer qu'un objet à la fois. Cela à nécessité l'ajout d'un attribut Avatar pour le monde, afin de gérer les multiples déplacements. Si aucun avatar ne peut se déplacer (exemple à la fin de la partie), cette variable est vide.    
   Dans notre version, nous avons fais le choix de se déplacer case par case plutôt que de choisir la ligne et la colonne pour se déplacer. Toutefois, l'ancienne methode de déplacement est disponible dans l'ancienne version du projet.  
   #### Contrôles:   
   UP    : Se déplacer en haut  
