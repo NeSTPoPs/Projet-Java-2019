@@ -51,7 +51,7 @@ Par Quentin Bellut et Matthieu de Castelbajac
   
   ### Main  
   #### Génération du monde
-  * Ajout méthode getInstance() : Permet d'éviter une duplication du code lors de la génération des items, et de leur ajout dans le monde. Elle retourne une nouvelle instance de même type et permet ainsi de dupliquer un objet sans besoin de savoir son type.
+  * Ajout méthode getInstance() : Permet d'éviter une duplication du code lors de la génération des items, et de leur ajout dans le monde. Elle retourne une nouvelle instance de même type et permet ainsi de dupliquer un objet sans avoir besoin de son type.
   ### Fonctionnement du jeu
   * Ajout d'un menu textuel qui permet de choisir le nombre de joueurs et leurs noms. Le jeu devient donc jouable de 1 à X joueurs.
   
