@@ -1,5 +1,5 @@
 Par Quentin Bellut et Matthieu de Castelbajac
-# NOM DU JEU
+# Projet Java 2019
 
 ![image](https://user-images.githubusercontent.com/47456539/70750135-166a7c80-1d2e-11ea-93e0-5a05082804fa.PNG)
 
