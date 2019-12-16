@@ -31,7 +31,7 @@ Par Quentin Bellut et Matthieu de Castelbajac
   ### Personnages
   #### Q17 : Créatures
   Ajout de deux créatures spéciales :
-  * L'Enchanteresse : L'Enchanteresse ne participe mais donne un bonus de vitesse à toutes les créatures alliées à la fin de la partie. Elle ne peut être recrutée qu'avec la pomme dorée.
+  * L'Enchanteresse : L'Enchanteresse ne participe pas à la course, mais donne un bonus de vitesse à toutes les créatures alliées à la fin de la partie. Elle ne peut être recrutée qu'avec la pomme dorée.
   * Les recycleurs : les éboueurs acceptent tous les accessoires mangeables, recyclent très bien les poubelles, mais leurs performances sont drastiquement réduites par la consommation de produits frais. 
  
   ### Q20 :       
@@ -40,12 +40,19 @@ Par Quentin Bellut et Matthieu de Castelbajac
   Ajout de l'interface KeyListener() 
   :warning: non optimale 
   
-  En effet, le KeyListener requiert le focus (l'attention) d'une instance précise -- ici notre monde -- et ne peut donc déplacer qu'un objet à la fois. Cela à nécessité l'ajout d'un attribut Avatar pour le monde, afin de gérer les multiples déplacements.
+  #### Méthode pour se déplacer:  
+  KeyListener requiert le focus (l'attention) d'une instance précise -- ici notre monde -- et ne peut donc déplacer qu'un objet à la fois. Cela à nécessité l'ajout d'un attribut Avatar pour le monde, afin de gérer les multiples déplacements. Si aucun avatar ne peut se déplacer (exemple à la fin de la partie), cette variable est vide.  
+  Dans notre version, nous avons fais le choix de se déplacer case par case plutôt que de choisir la ligne et la colonne pour se déplacer. Toutefois, l'ancienne methode de déplacement est disponible dans l'ancienne version du projet.  
+  #### Contrôles:   
+  UP    : Se déplacer en haut  
+  DOWN  : Se déplacer en bas  
+  LEFT  : Se déplacer à gauche  
+  RIGHT : Se déplacer à droite  
   
-  ### Main
+  ### Main  
   #### Génération du monde
-  * Ajout méthode getInstance() : Permet d'éviter une duplication du code lors de la génération des items, et de leur ajout dans le monde.
-  ### Fontionnement du jeu
+  * Ajout méthode getInstance() : Permet d'éviter une duplication du code lors de la génération des items, et de leur ajout dans le monde. Elle retourne une nouvelle instance de même type et permet ainsi de dupliquer un objet sans besoin de savoir son type.
+  ### Fonctionnement du jeu
   * Ajout d'un menu textuel qui permet de choisir le nombre de joueurs et leurs noms. Le jeu devient donc jouable de 1 à X joueurs.
   
   
