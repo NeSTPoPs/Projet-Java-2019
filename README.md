@@ -47,7 +47,7 @@ Par Quentin Bellut et Matthieu de Castelbajac
   LEFT  : Se déplacer à gauche  
   RIGHT : Se déplacer à droite  
   #### Edit : 
-  Nous avons également réduit la distance d'intéraction des avatars avec le reste du monde à 1 case, par souci de jouabilité, mais aussi par cohérence avec l'implémentation des Cases Boost.
+  Nous avons également réduit la distance d'intéraction des avatars avec le reste du monde à 0 case, par souci de jouabilité, mais aussi par cohérence avec l'implémentation des Cases Boost. Dit autrement, il faut se trouver sur la case pour intéragir avec les items et personnages qui s'y trouvent.
   
   ### Main  
   #### Génération du monde
