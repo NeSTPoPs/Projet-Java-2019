@@ -46,6 +46,8 @@ Par Quentin Bellut et Matthieu de Castelbajac
   DOWN  : Se déplacer en bas  
   LEFT  : Se déplacer à gauche  
   RIGHT : Se déplacer à droite  
+  #### Edit : 
+  Nous avons également réduit la distance d'intéraction des avatars avec le reste du monde à 1 case, par souci de jouabilité, mais aussi par cohérence avec l'implémentation des Cases Boost.
   
   ### Main  
   #### Génération du monde
