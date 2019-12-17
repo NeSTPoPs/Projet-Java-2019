@@ -94,7 +94,7 @@ public class TestGraphisme  {
 		
 		
 		
-		
+		m.setFocusable(false);  // Pour empêcher le KeyListener de fonctionner
 		m.setAvatar(null);
 		Avatar gagnant  = null;
 		double distanceMax = 0;
@@ -108,6 +108,7 @@ public class TestGraphisme  {
         	}
         }
 		System.out.println(String.format("%s gagne la course !",gagnant.getNom()));
+		f.setVisible(false);
 	}
 
 	
